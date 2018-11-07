@@ -1,0 +1,20 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+
+{% block content %}
+{{util.flashed_messages(dismissible=True)}}
+<div class="container">
+  <h1>The Movies List Program</h1>
+ <button>Movies by Category</button>
+ <button>Movies by Year</button>
+ <button>Add Movie</button>
+ <button>Delete Movie</button>
+</div>
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
+{% endblock %}
