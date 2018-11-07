@@ -30,6 +30,7 @@ def create_app():
   app.config['SECRET_KEY'] = 'devkey'
 
   @app.route('/', methods=('GET', 'POST'))
+
   @app.route('/index')
   def index():
       return render_template('index.html')
@@ -37,7 +38,6 @@ def create_app():
   @app.route('/category')
   def moviesByCategory():
       return render_template('movies_by_category.html')
-
 
   return app
 
