@@ -30,7 +30,7 @@ def create_app():
   app.config['SECRET_KEY'] = 'devkey'
 
   @app.route('/', methods=('GET', 'POST'))
-  def index():
+  def indexT():
       form = ExampleForm()
       form.validate_on_submit()  # to get error messages to the browser
       flash('critical message', 'critical')
@@ -41,6 +41,10 @@ def create_app():
       flash('different message', 'different')
       flash('uncategorized message')
       return render_template('sampleIndex.html', form=form)
+
+  @app.route('/bharat', methods=('GET', 'POST'))
+  def index():
+      return render_template('index.html')
 
   return app
 
