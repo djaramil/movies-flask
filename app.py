@@ -1,6 +1,9 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from movies import *
+import os
+
+port = int(os.getenv('PORT', 8000))
 
 
 def create_app():
@@ -38,4 +41,4 @@ def create_app():
 # create an app instance
 app = create_app()
 
-app.run(debug=True)
+app.run(host='0.0.0.0', port=port, debug=True)
