@@ -30,21 +30,14 @@ def create_app():
   app.config['SECRET_KEY'] = 'devkey'
 
   @app.route('/', methods=('GET', 'POST'))
-  def indexT():
-      form = ExampleForm()
-      form.validate_on_submit()  # to get error messages to the browser
-      #flash('critical message', 'critical')
-      #flash('error message', 'error')
-      #flash('warning message', 'warning')
-      #flash('info message', 'info')
-      #flash('debug message', 'debug')
-      #flash('different message', 'different')
-      #flash('uncategorized message')
-      return render_template('index.html', form=form)
 
-  @app.route('/bharat', methods=('GET', 'POST'))
+  @app.route('/index')
   def index():
       return render_template('index.html')
+
+  @app.route('/category')
+  def moviesByCategory():
+      return render_template('movies_by_category.html')
 
   return app
 
