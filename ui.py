@@ -11,6 +11,7 @@ def display_welcome():
 def display_menu():
     print("COMMAND MENU")
     print("cat  - View movies by category")
+    print("cat-all  - View all movies by category")
     print("year - View movies by year")
     print("add  - Add a movie")
     print("del  - Delete a movie")
@@ -23,6 +24,10 @@ def display_categories():
     for category in categories:
         print(str(category.id) + ". " + category.name)
     print()
+
+def display_movies_by_all_category():
+    movies = db.get_movies_by_all_categories()
+    print(movies)
 
 def display_movies_by_category():
     category_id = int(input("Category ID: "))
@@ -73,6 +78,8 @@ def main():
         command = input("Command: ")
         if command == "cat":
             display_movies_by_category()
+        elif command == "cat-all":
+            display_movies_by_all_category()
         elif command == "year":
             display_movies_by_year()
         elif command == "add":
