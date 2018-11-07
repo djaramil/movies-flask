@@ -40,7 +40,7 @@ def create_app():
       flash('debug message', 'debug')
       flash('different message', 'different')
       flash('uncategorized message')
-      return render_template('index.html', form=form)
+      return render_template('sampleIndex.html', form=form)
 
   return app
 
