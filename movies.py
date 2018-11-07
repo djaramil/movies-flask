@@ -11,14 +11,18 @@ def list_categories():
     print(categories)
     return categories
 
+def list_movies_by_all_category():
+    movies = db.get_movies_by_all_categories()
+    return(movies)
+
 def list_movies_by_category():
     category_id = int(input("Category ID: "))
     print()
     category = db.get_category(category_id)
     movies = db.get_movies_by_category(category_id)
-    display_movies(movies, category.name.upper())
+    list_movies(movies, category.name.upper())
     
-def display_movies(movies, title_term):
+def list_movies(movies, title_term):
     print("MOVIES - " + title_term)
     line_format = "{:3s} {:37s} {:6s} {:5s} {:10s}"
     print(line_format.format("ID", "Name", "Year", "Mins", "Category"))
@@ -29,11 +33,15 @@ def display_movies(movies, title_term):
                                  movie.category.name))
     print()    
 
-def display_movies_by_year():
+def list_movies_by_year():
     year = int(input("Year: "))
     print()
     movies = db.get_movies_by_year(year)
-    display_movies(movies, str(year))
+    list_movies(movies, str(year))
+
+def list_movies_by_all_year():
+    movies = db.get_movies_by_all_year()
+    return(movies)
 
 def add_movie():
     name        = input("Name: ")
@@ -51,4 +59,4 @@ def delete_movie():
     movie_id = int(input("Movie ID: "))
     db.delete_movie(movie_id)
     print("Movie ID " + str(movie_id) + " was deleted from database.\n")
-
+        
