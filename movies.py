@@ -12,6 +12,7 @@ def list_categories():
     return categories
 
 def list_movies_by_all_category():
+    db.connect()
     movies = db.get_movies_by_all_categories()
     return(movies)
 
@@ -40,6 +41,7 @@ def list_movies_by_year():
     list_movies(movies, str(year))
 
 def list_movies_by_all_year():
+    db.connect()
     movies = db.get_movies_by_all_year()
     return(movies)
 
