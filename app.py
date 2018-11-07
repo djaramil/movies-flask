@@ -1,28 +1,8 @@
-from flask import Flask, render_template, flash
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
-from flask_appconfig import AppConfig
-from flask_wtf import Form, RecaptchaField
-from flask_wtf.file import FileField
-from wtforms import TextField, HiddenField, ValidationError, RadioField,\
-    BooleanField, SubmitField, IntegerField, FormField, validators
-from wtforms.validators import Required
 from movies import *
 from db import *
 
-class ExampleForm(Form):
-    field1 = TextField('First Field', description='This is field one.')
-    field2 = TextField('Second Field', description='This is field two.',
-                       validators=[Required()])
-    hidden_field = HiddenField('You cannot see this', description='Nope')
-    # recaptcha = RecaptchaField('A sample recaptcha field')
-    radio_field = RadioField('This is a radio field', choices=[
-        ('head_radio', 'Head radio'),
-        ('radio_76fm', "Radio '76 FM"),
-        ('lips_106', 'Lips 106'),
-        ('wctr', 'WCTR'),
-    ])
-    checkbox_field = BooleanField('This is a checkbox',
-                                  description='Checkboxes can be tricky.')
 
 def create_app():
   app = Flask(__name__)
@@ -38,7 +18,9 @@ def create_app():
 
   @app.route('/category')
   def moviesByCategory():
-    return render_template('movies_by_category.html')
+      connect()
+      allCategories = db.get_movies_by_all_categories()
+      return render_template('movies_by_category.html',content=allCategories)
 
   @app.route('/year')
   def moviesByYear():

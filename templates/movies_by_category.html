@@ -7,8 +7,23 @@
 {% block content %}
 {{util.flashed_messages(dismissible=True)}}
 {{header}}
-{% endblock %}
 
+<table align="center" border="5" cellpadding="5" cellspacing="5">
+    <tr>
+        <th>MovieId</th>
+        <th>MovieName</th>
+        <th>CategoryName</th>
+    </tr>
+    {%- for data in content %}
+        <tr>
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.category.name}}</td>
+        </tr>
+    {%- endfor %}
+</table>
+
+{% endblock %}
 {% block head %}
 {{super()}}
 {{fixes.ie8()}}
