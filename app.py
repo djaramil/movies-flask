@@ -6,7 +6,8 @@ from flask_wtf.file import FileField
 from wtforms import TextField, HiddenField, ValidationError, RadioField,\
     BooleanField, SubmitField, IntegerField, FormField, validators
 from wtforms.validators import Required
-
+from movies import *
+from db import *
 
 class ExampleForm(Form):
     field1 = TextField('First Field', description='This is field one.')
@@ -37,7 +38,19 @@ def create_app():
 
   @app.route('/category')
   def moviesByCategory():
-      return render_template('movies_by_category.html')
+    return render_template('movies_by_category.html')
+
+  @app.route('/year')
+  def moviesByYear():
+      return render_template('movies_by_year.html')
+
+  @app.route('/addMovie')
+  def addMovie():
+      return render_template('add_movie.html')
+
+  @app.route('/deleteMovie')
+  def deleteMovie():
+      return render_template('delete_movie.html')
 
   return app
 
