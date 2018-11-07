@@ -27,7 +27,7 @@ def display_categories():
 
 def display_movies_by_all_category():
     movies = db.get_movies_by_all_categories()
-    print(movies)
+    display_movies(movies, "All Category")
 
 def display_movies_by_category():
     category_id = int(input("Category ID: "))
@@ -52,6 +52,10 @@ def display_movies_by_year():
     print()
     movies = db.get_movies_by_year(year)
     display_movies(movies, str(year))
+
+def display_movies_by_all_year():
+    movies = db.get_movies_by_all_year()
+    display_movies(movies, "all years")   
 
 def add_movie():
     name        = input("Name: ")
@@ -82,6 +86,8 @@ def main():
             display_movies_by_all_category()
         elif command == "year":
             display_movies_by_year()
+        elif command == "year-all":
+            display_movies_by_all_year()
         elif command == "add":
             add_movie()
         elif command == "del":
