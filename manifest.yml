@@ -1,9 +1,9 @@
 ---
 applications:
-- name: test-dj-assignment
+- name: movies-flask-dj
   memory: 128MB
   disk_quota: 256MB
   buildpack: python_buildpack
   command: python app.py
-  domain: w3ibm.mybluemix.net
-  host: test-dj-assignment
+  domain: mybluemix.net
+  host: movies-flask-dj
