@@ -7,6 +7,20 @@
 {% block content %}
 {{util.flashed_messages(dismissible=True)}}
 {{header}}
+<table align="center" border="5" cellpadding="5" cellspacing="5">
+    <tr>
+        <th>Movie Id</th>
+        <th>Movie Name</th>
+        <th>Year</th>
+    </tr>
+    {%- for data in content %}
+        <tr>
+            <td>{{data.id}}</td>
+            <td>{{data.name}}</td>
+            <td>{{data.year}}</td>
+        </tr>
+    {%- endfor %}
+</table>
 {% endblock %}
 
 {% block head %}

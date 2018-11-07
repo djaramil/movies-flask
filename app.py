@@ -1,7 +1,6 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from movies import *
-from db import *
 
 
 def create_app():
@@ -18,13 +17,13 @@ def create_app():
 
   @app.route('/category')
   def moviesByCategory():
-      connect()
-      allCategories = db.get_movies_by_all_categories()
+      allCategories = list_movies_by_all_category()
       return render_template('movies_by_category.html',content=allCategories)
 
   @app.route('/year')
   def moviesByYear():
-      return render_template('movies_by_year.html')
+      allMoviesByYear = list_movies_by_all_year()
+      return render_template('movies_by_year.html',content=allMoviesByYear)
 
   @app.route('/addMovie')
   def addMovie():
