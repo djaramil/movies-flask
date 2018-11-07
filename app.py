@@ -33,14 +33,14 @@ def create_app():
   def indexT():
       form = ExampleForm()
       form.validate_on_submit()  # to get error messages to the browser
-      flash('critical message', 'critical')
-      flash('error message', 'error')
-      flash('warning message', 'warning')
-      flash('info message', 'info')
-      flash('debug message', 'debug')
-      flash('different message', 'different')
-      flash('uncategorized message')
-      return render_template('sampleIndex.html', form=form)
+      #flash('critical message', 'critical')
+      #flash('error message', 'error')
+      #flash('warning message', 'warning')
+      #flash('info message', 'info')
+      #flash('debug message', 'debug')
+      #flash('different message', 'different')
+      #flash('uncategorized message')
+      return render_template('index.html', form=form)
 
   @app.route('/bharat', methods=('GET', 'POST'))
   def index():
