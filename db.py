@@ -11,12 +11,7 @@ conn = None
 def connect():
     global conn
     if not conn:
-        if sys.platform == "win32":
-            DB_FILE = "/murach/python/_db/movies.sqlite"
-        else:
-            HOME = os.environ["HOME"]
-            DB_FILE = HOME + "/Users/djaramillo/Documents/FAU/Python-Fall2018/python-book-resources/Student\ download/book_apps/ch17/db_tester/movies.sqlite"
-        
+        DB_FILE = "db/movies.sqlite"
         conn = sqlite3.connect(DB_FILE)
         conn.row_factory = sqlite3.Row
 
