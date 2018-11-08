@@ -12,12 +12,16 @@
         <th>Movie Id</th>
         <th>Movie Name</th>
         <th>Year</th>
+        <th>Category</th>
+        <th>Minutes</th>
     </tr>
     {%- for data in content %}
         <tr>
             <td>{{data.id}}</td>
             <td>{{data.name}}</td>
             <td>{{data.year}}</td>
+            <td>{{data.category.name}}</td>
+            <td>{{data.minutes}}</td>
         </tr>
     {%- endfor %}
 </table>
