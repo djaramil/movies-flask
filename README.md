@@ -2,6 +2,6 @@
 
 Developed from https://github.com/mbr/flask-bootstrap
 
-under sample_app
+Install python package requirements by running:
 pip3 install -r requirements.txt
 
