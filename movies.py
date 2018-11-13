@@ -45,20 +45,22 @@ def list_movies_by_all_year():
     movies = db.get_movies_by_all_year()
     return(movies)
 
-def add_movie():
-    name        = input("Name: ")
-    year        = int(input("Year: "))
-    minutes     = int(input("Minutes: "))
-    category_id = int(input("Category ID: "))
-    
+def list_all_category():
+    db.connect()
+    movies = db.get_categories()
+    return(movies)
+
+def add_movie(name,year, minutes, category_id):
+    db.connect()
     category = db.get_category(category_id)
     movie = Movie(name=name, year=year, minutes=minutes,
                   category=category)
-    db.add_movie(movie)    
+    db.add_movie(movie)
     print(name + " was added to database.\n")
 
-def delete_movie():
-    movie_id = int(input("Movie ID: "))
+
+def delete_movie(movie_id):
+    db.connect()
     db.delete_movie(movie_id)
     print("Movie ID " + str(movie_id) + " was deleted from database.\n")
         
