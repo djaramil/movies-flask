@@ -45,6 +45,34 @@ def create_app():
             return render_template('index.html',message=message)
         return render_template('add_movie.html', content=all_categories)
 
+    @app.route('/editMovie', methods=['POST', 'GET'])
+    def editMovie():
+        movie_id_to_get = request.args.get("movieId")
+        all_categories = list_all_category()
+        if movie_id_to_get and movie_id_to_get != "": # Display edit form for movie when specified movie id
+            movie_to_edit = get_movie_by_id(movie_id_to_get)
+            return render_template('edit_movie.html', movie_to_edit=movie_to_edit, categories=all_categories)
+        elif request.method != "POST":  # Display list of movies if movie id is not supplied
+            movies_by_all_category = list_movies_by_all_category()
+            return render_template('edit_movie_list.html', content=movies_by_all_category)
+        elif request.method == "POST":  # Make actual update to movie details when submitted update request
+            movie_id = request.form['movieId']
+            movie_name = request.form['movieName']
+            category_id = request.form['movieCategory']
+            movie_year = request.form['movieYear']
+            movie_minutes = request.form['movieMinutes']
+            print movie_id
+            print movie_name
+            print category_id
+            print movie_year
+            print movie_minutes
+            edit_movie(movie_id, movie_name, movie_year, movie_minutes, category_id)
+            message = "Movie successfully edited " + movie_name
+            # flash(message, "info")
+            return render_template('index.html', message=message)
+        movies_by_all_category = list_movies_by_all_category()
+        return render_template('edit_movie_list.html', content=movies_by_all_category)
+
     @app.route('/deleteMovie')
     def deleteMovie():
         all_categories = list_movies_by_all_category()

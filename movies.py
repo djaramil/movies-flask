@@ -16,6 +16,11 @@ def list_movies_by_all_category():
     movies = db.get_movies_by_all_categories()
     return(movies)
 
+def get_movie_by_id(movieId):
+    db.connect()
+    movie = db.get_movie_by_id(movieId)
+    return(movie)
+
 def list_movies_by_category():
     category_id = int(input("Category ID: "))
     print()
@@ -33,6 +38,10 @@ def list_movies(movies, title_term):
                                  str(movie.year), str(movie.minutes),
                                  movie.category.name))
     print()    
+
+def edit_movie(movie_id, name, year, minutes, category_id):
+    db.connect()
+    db.edit_movie(movie_id, name, year, minutes, category_id)
 
 def list_movies_by_year():
     year = int(input("Year: "))
