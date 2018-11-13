@@ -35,10 +35,10 @@ def create_app():
             category_id = request.form['movieCategory']
             movie_year = request.form['movieYear']
             movie_minutes = request.form['movieMinutes']
-            print movie_name
-            print category_id
-            print movie_year
-            print movie_minutes
+            # print movie_name
+            # print category_id
+            # print movie_year
+            # print movie_minutes
             add_movie(movie_name, movie_year, movie_minutes, category_id)
             message = "Movie successfully added " + movie_name
             # flash(message, "info")
@@ -61,11 +61,11 @@ def create_app():
             category_id = request.form['movieCategory']
             movie_year = request.form['movieYear']
             movie_minutes = request.form['movieMinutes']
-            print movie_id
-            print movie_name
-            print category_id
-            print movie_year
-            print movie_minutes
+            # print movie_id
+            # print movie_name
+            # print category_id
+            # print movie_year
+            # print movie_minutes
             edit_movie(movie_id, movie_name, movie_year, movie_minutes, category_id)
             message = "Movie successfully edited " + movie_name
             # flash(message, "info")
