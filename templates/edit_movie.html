@@ -1,0 +1,57 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+{% import "bootstrap/utils.html" as util %}
+{% import "header.html" as header%}
+
+{% block content %}
+{{util.flashed_messages(dismissible=True)}}
+{{header}}
+<form method="post" action="/editMovie">
+    <table border="5" cellpadding="5" align="center">
+        <tr>
+            <th>Name</th>
+            <th>:</th>
+            <td><input type="text" id="movieId" name="movieId" maxlength="100" readonly value="{{movie_to_edit.id}}"/></td>
+        </tr>
+        <tr>
+            <th>Category Id </th>
+            <th>:</th>
+            <td><select id="movieCategory" name="movieCategory">
+                {% for data in categories %}
+                        <option value="{{data.id}}"
+                                {% if data.id == movie_to_edit.category.id %}
+                                selected
+                                {% endif %}
+                        >{{data.name}}</option>
+                {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <th>Name</th>
+            <th>:</th>
+            <td><input type="text" id="movieName" name="movieName" maxlength="100" value="{{movie_to_edit.name}}"/></td>
+        </tr>
+        <tr>
+            <th>Year</th>
+            <th>:</th>
+            <td><input type="number" id="movieYear" name="movieYear" maxlength="100" value="{{movie_to_edit.year}}"/></td>
+        </tr>
+        <tr>
+            <th>Minutes</th>
+            <th>:</th>
+            <td><input type="number" id="movieMinutes" name="movieMinutes" maxlength="4" value="{{movie_to_edit.minutes}}"/></td>
+        </tr>
+        <tr>
+            <th><input type="submit" value="Save Movie"></th>
+            <th>:</th>
+            <th><input type="button" onclick="window.location.href='/'" value="cancel"></th>
+        </tr>
+    </table>
+</form>
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
+{% endblock %}

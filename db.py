@@ -80,6 +80,18 @@ def get_movies_by_all_categories():
         movies.append(make_movie(row))
     return movies
 
+def get_movie_by_id(movieId):
+    query = '''SELECT movieID, Movie.name, year, minutes,
+                      Movie.categoryID as categoryID,
+                      Category.name as categoryName
+               FROM Movie JOIN Category
+                      ON Movie.categoryID = Category.categoryID
+               WHERE movieID = ?'''
+    with closing(conn.cursor()) as c:
+        c.execute(query, (movieId,))
+        results = c.fetchall()
+    return make_movie(results[0])
+
 def get_movies_by_year(year):
     query = '''SELECT movieID, Movie.name, year, minutes,
                       Movie.categoryID as categoryID,
@@ -118,6 +130,15 @@ def add_movie(movie):
         c.execute(sql, (movie.category.id, movie.name, movie.year,
                         movie.minutes))
         conn.commit()
+
+def edit_movie(movie_id, name, year, minutes, category_id):
+    sql = '''UPDATE Movie SET name = ?, year = ?, minutes = ?, categoryID = ?  WHERE movieID = ?'''
+    print (sql, movie_id, name, year, minutes, category_id)
+    with closing(conn.cursor()) as c:
+        c.execute(sql, (name, year, minutes, category_id, movie_id))
+        test = conn.commit()
+        print("Test", test)
+
 
 def delete_movie(movie_id):
     sql = '''DELETE FROM Movie WHERE movieID = ?'''

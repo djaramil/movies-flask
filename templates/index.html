@@ -5,8 +5,9 @@
 {% import "header.html" as header%}
 <div class="container">
 {% block content %}
-{{util.flashed_messages(dismissible=True)}}
 {{header}}
+{{util.flashed_messages(dismissible=True)}}
+<center>{{message}}</center>
 {% endblock %}
 </div>
 {% block head %}
